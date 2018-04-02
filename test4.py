@@ -8,6 +8,8 @@ linear_model = W*x+b
 init=tf.global_variables_initializer()
 sess.run(init)
 
+
+
 y = tf.placeholder(tf.float32) #占位符，用于输入想要得到的数据集
 squared_deltas = tf.square(linear_model-y) #正确结果与模型结果差的平方
 loss = tf.reduce_sum(squared_deltas) #所有差平方的和
@@ -29,6 +31,7 @@ sess.run(init)
 for i in range(1000):
     sess.run(train,{x:[1,2,3,4],y:[0,-1,-2,-3]})
 print(sess.run([W,b]))
+
 
 #保存tensorboard图
 writer = tf.summary.FileWriter('D:/ten', tf.get_default_graph())

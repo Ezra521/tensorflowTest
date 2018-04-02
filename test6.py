@@ -2,7 +2,8 @@ import random
 import string
 import sys
 import math
-from PIL import Image,ImageDraw,ImageFont,ImageFilter
+from PIL import \
+    Image,ImageDraw,ImageFont,ImageFilter
 
 #用来绘制干扰线
 def gene_line(draw):
@@ -11,7 +12,7 @@ def gene_line(draw):
     end = (200-py*50, random.randint(0, 100))
     draw.line([begin, end], fill = 0,width=5)
 
-filename="D:/"
+filename="D:/code/"
 typen=2
 typet=["arialbd.ttf","corbelb.ttf"]
 #字体的位置
