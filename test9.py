@@ -42,6 +42,10 @@ with tf.Session() as sess:
     print("w2:\n", sess.run(w2))
     print("\n")
 
+
+    #保存模型
+    saver = tf.train.Saver()
+
     # 训练模型。
     STEPS = 3000
     for i in range(STEPS):
@@ -50,12 +54,20 @@ with tf.Session() as sess:
         sess.run(train_step, feed_dict={x: X[start:end], y_: Y_[start:end]})
         if i % 500 == 0:
             total_loss = sess.run(loss_mse, feed_dict={x: X, y_: Y_})
+
+            #保存模型
+            saver.save(sess,"./mode/",global_step=i)
             print("After %d training step(s), loss_mse on all data is %g" % (i, total_loss))
 
     # 输出训练后的参数取值。
     print("\n")
     print("w1:\n", sess.run(w1))
     print("w2:\n", sess.run(w2))
+
+    # x_test =tf.constant([[0.09, 0.04]])
+    # aa = tf.matmul(x, w1)
+    # y_test = tf.matmul(aa, w2)
+    # print(y_test)
 
 """
 X:
